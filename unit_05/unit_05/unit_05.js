@@ -9,6 +9,7 @@ function t1() {
     for (i = 2; i <= 16; i++) {
         a1 = a1 + i + '_';
         // console.log(a1);
+        console.log('test');
     }
     document.querySelector('.out-1').innerHTML = a1;
 
