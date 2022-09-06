@@ -238,10 +238,10 @@ function t10() {
     let out10 = '';
 
     for (i = 1950; i <= 1970; i = i + 2) {
-        out10 = out10 + i; //+ '_';       // Нужно ли выводить последний разделитель _ ?
-        if (i < 1970) {
-            out10 = out10 + '_';
-        }
+        out10 = out10 + i + '_';       // Нужно ли выводить последний разделитель _ ?
+        // if (i < 1970) {
+        //     out10 = out10 + '_';
+        // }
     }
 
     document.querySelector('.out-10').innerHTML = out10;
@@ -314,7 +314,8 @@ function t13() {
     let i13 = document.querySelectorAll('.i-13');
 
     for (i = 0; i < i13.length; i++) {
-        i13[i].placeholder = i + 1;
+        // i13[i].placeholder = i + 1;
+        i13[i].value = i + 1;
         // console.log(i);
         // console.log(i13[i]);
     }
