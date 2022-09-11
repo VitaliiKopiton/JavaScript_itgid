@@ -74,14 +74,19 @@ function f5() {
 document.querySelector('.b-5').onclick = f5;
 
 
+
 //  Task 6
 // По нажатию .b-6 запускайте функцию f6, которая выводит в .out-6 количество параграфов с классом .p-6.
 
 function f6() {
 
+    document.querySelector('.out-6').innerHTML = document.querySelectorAll('.p-6').length;
+    // console.log(document.querySelectorAll('.p-6'));
+
 }
 
 document.querySelector('.b-6').onclick = f6;
+
 
 
 //  Task 7
@@ -90,10 +95,16 @@ document.querySelector('.b-6').onclick = f6;
 let blocks7 = document.querySelectorAll('.out-7');
 
 function f7() {
+
+    for (let i = 0; i < blocks7.length; i++) {
+        blocks7[i].classList = 'bg-orange';
+    }
+
     //внутри цикла blocks7[i].classList....
 }
 
 document.querySelector('.b-7').onclick = f7;
+
 
 
 //  Task 8
@@ -102,17 +113,23 @@ document.querySelector('.b-7').onclick = f7;
 let blocks8 = document.querySelectorAll('.out-8');
 
 function f8() {
+
+    for (let i = 0; i < blocks8.length; i++) {
+        // console.log(blocks8[i]);
+        blocks8[i].classList.toggle('bg-orange');
+    }
     //внутри цикла blocks8[i].classList....
 }
 
 document.querySelector('.b-8').onclick = f8;
 
 
+
 //  Task 9
 // Усложним предыдущие задачи. С помощью цикла повесим на блоки .out-9 событие клик. По клику должна выполняться функция f9. Функция, должна добавлять класс .bg-orange тому .out-9 на котором кликнули.
 
 function f9() {
-    //this.classList...  // все решается одной строкой
+    this.classList.add('bg-orange');    //...  // все решается одной строкой
 }
 
 let div9 = document.querySelectorAll('.out-9');
@@ -125,9 +142,21 @@ for (let i = 0; i < div9.length; i++) {
 //  Task 10
 // Усложним предыдущие задачи. С помощью цикла повим на блоки .out-10 событие клик. По клику должна выполняться функция f10. Функция, должна делать toggle класса .bg-orange тому .out-10 на котором кликнули.
 
-//let div10 = тут получите все out-10
+let div10 = document.querySelectorAll('.out-10');    // = тут получите все out-10
+// console.log(div10);
 
 function f10() {
+    this.classList.toggle('bg-orange');
+    // console.log('f10');
+
+}
+
+// div10[0].onclick = f10();
+
+for (let i = 0; i < div10.length; i++) {
+
+    // console.log(i);
+    div10[i].onclick = f10;
 
 }
 
@@ -141,9 +170,20 @@ function f10() {
 
 function f11() {
 
+    let out11 = document.querySelector('.out-11');
+    let div11 = document.createElement('div');           // v1
+    // div11.append('25');                              // v2
+    div11.innerHTML = '25';
+    out11.append(div11);
+
+
+    // out11.append(div11);
+
 }
 
 document.querySelector('.b-11').onclick = f11;
+
+
 
 //  Task 12
 // Добавьте кнопку .b-12, которая запускает функцию f12. Функция создает через createElement div c текстом 12 и добавляет ему класс bg-12. Созданный div добавляется в out-12.
