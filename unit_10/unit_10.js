@@ -54,7 +54,7 @@ document.querySelector('.b-3').onclick = f3;
 let ar4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];  // переменную обьявляем эту здесь!!!!
 
 function f4() {
-    document.querySelector('.out-4').innerHTML = `${ar4[0]} ${ar4[3]}  ${ar4[8]}`;
+    document.querySelector('.out-4').innerHTML = `${ar4[0]} ${ar4[3]} ${ar4[8]}`;
 }
 
 document.querySelector('.b-4').onclick = f4;
