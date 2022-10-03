@@ -17,11 +17,12 @@ document.querySelector('.b-1').onclick = f1;
 
 function f2() {
     let a2 = [[12, 'hi'], [45, 87], [55, 13]];
-
-    // return
+    document.querySelector('.out-2').innerHTML = a2[0][1];
+    return a2[0][1];
 }
 
 document.querySelector('.b-2').onclick = f2;
+
 
 
 // Task 3
@@ -30,11 +31,12 @@ document.querySelector('.b-2').onclick = f2;
 
 function f3() {
     let a3 = [[1, 2, 3], [3, 4, 5], [6, [7, 'my']]];
-
-    // return
+    document.querySelector('.out-3').innerHTML = a3[2][1][1];
+    return a3[2][1][1];
 }
 
 document.querySelector('.b-3').onclick = f3;
+
 
 
 // Task 4
@@ -43,11 +45,13 @@ document.querySelector('.b-3').onclick = f3;
 
 function f4() {
     let a4 = [[1, 2, 3], 'go', [3, 4, 5], [6, [7, 'my']]];
-
-    // return
+    document.querySelector('.out-4').innerHTML = a4[1];
+    return a4[1];
 }
 
 document.querySelector('.b-4').onclick = f4;
+
+
 
 // Task 5
 // При нажатии b-5 выполняете функцию f5. Функция должна вывести в out-5 четные значения из массива a5. Для перебора используем цикл.
@@ -66,16 +70,29 @@ function f5() {
 document.querySelector('.b-5').onclick = f5;
 
 
+
 // Task 6
 // При нажатии b-6 выполняете функцию f6. Функция должна вывести в out-6 нечетные значения из массива a6. Для перебора используем цикл. Делаем по образу предыдущей задачи.
 
 function f6() {
+
     let out = '';
     let a6 = [[1, 2], [3, 4], [5, 6], [21, 34], [44, 56]];
+
+    // console.log(a6[4][0] % 2);
+
+    for (let i6 = 0; i6 < a6.length; i6++) {
+        if (a6[i6][0] % 2 == 1) out += a6[i6][0] + ' ';
+        if (a6[i6][1] % 2 == 1) out += a6[i6][1] + ' ';
+    }
+
+    document.querySelector('.out-6').innerHTML = out;
 
 }
 
 document.querySelector('.b-6').onclick = f6;
+
+
 
 // Task 7
 // При нажатии b-7 выполняете функцию f7. Функция должна вывести в out-7 четные значения из массива a7. Как видите, вложенные массивы имеют разную длину, значит, предыдущий вариант уже не работает. Используем цикл. Вывод - через пробел.
@@ -100,6 +117,8 @@ function f7() {
 
 document.querySelector('.b-7').onclick = f7;
 
+
+
 // Task 8
 // При нажатии b-8 выполняете функцию f8. Функция должна вывести в out-8 нечетные значения из массива a8. Как видите, вложенные массивы имеют разную длину, значит, предыдущий вариант уже не работает. Используем цикл. Вывод - через пробел.
 
@@ -113,10 +132,19 @@ function f8() {
         [44, 56]
     ];
 
+    for (let i8 = 0; i8 < a8.length; i8++) {
+        for (let j8 = 0; j8 < a8[i8].length; j8++) {
+            if (a8[i8][j8] % 2 == 1) out += `${a8[i8][j8]} `;
+        }
+    }
+
+    document.querySelector('.out-8').innerHTML = out;
 
 }
 
 document.querySelector('.b-8').onclick = f8;
+
+
 
 // Task 9
 // При нажатии b-9 выполняете функцию f9. Функция должна вывести в out-9 значения из массива a9, которые больше нуля. Используем цикл. Вывод - через пробел.
@@ -131,10 +159,21 @@ function f9() {
         [44, -56]
     ];
 
+    for (let i9 = 0; i9 < a9.length; i9++) {
+        for (let j9 = 0; j9 < a9[i9].length; j9++) {
+            if (a9[i9][j9] > 0) {
+                out += `${a9[i9][j9]} `;
+            }
+        }
+    }
+
+    document.querySelector('.out-9').innerHTML = out;
 
 }
 
 document.querySelector('.b-9').onclick = f9;
+
+
 
 // Task 10
 // При нажатии b-10 выполняете функцию f10. Функция должна вывести в out-10 значения из массива a10, которые являются строкой. Используем цикл. Вывод - через пробел.
@@ -148,9 +187,25 @@ function f10() {
         ['st', 21, -34, -43],
         [44, -56, 'task']
     ];
+
+    // if (typeof a10[0][0] === 'number') {
+    //     console.log('Робить');
+    // }
+
+    for (let i10 = 0; i10 < a10.length; i10++) {
+        for (let j10 = 0; j10 < a10[i10].length; j10++) {
+            // console.log(typeof a10[i10][j10]);
+            if (typeof a10[i10][j10] == 'string') {
+                out += `${a10[i10][j10]} `;
+                // console.log(a10[i10][j10])
+            }
+        }
+    }
+    document.querySelector('.out-10').innerHTML = out;
 }
 
 document.querySelector('.b-10').onclick = f10;
+
 
 
 // Task 11
@@ -164,9 +219,19 @@ let a11 = [
 
 function f11() {
     let out = '';
+
+    for (let i11 = 0; i11 < a11.length; i11++) {
+        for (let j11 = a11[i11].length - 1; j11 >= 0; j11--) {
+            out += `${a11[i11][j11]} `;
+        }
+    }
+
+    document.querySelector('.out-11').innerHTML = out;
 }
 
 document.querySelector('.b-11').onclick = f11;
+
+
 
 // Task 12
 // Дан массив a12 который моделирует шахматную доску. Используя цикл выведите в out-12 единицы из этого массива. Все действия в функции f12. Функция запускается при нажатии на b12. Вывод через пробел.
@@ -182,9 +247,21 @@ function f12() {
         [0, 1, 0, 1, 0, 1, 0, 1],
         [1, 0, 1, 0, 1, 0, 1, 0],
     ];
+
+    let out12 = '';
+
+    for (let i12 = 0; i12 < a12.length; i12++) {
+        for (let j12 = 0; j12 < a12[i12].length; j12++) {
+            if (a12[i12][j12] == 1) out12 += `${a12[i12][j12]} `;
+        }
+    }
+
+    document.querySelector('.out-12').innerHTML = out12;
 }
 
 document.querySelector('.b-12').onclick = f12;
+
+
 
 // Task 13
 // При нажатии b-13 выполняете функцию f13. Функция должна присвоить переменной a13 массив эмулирующий шахматную доску. Причем массив должен создаваться с помощью циклов. Для проверки - выведите массив в консоль.
@@ -193,9 +270,31 @@ let a13 = [];
 
 function f13() {
 
+    a13.length = 8;
+
+    for (let i13 = 0; i13 < 8; i13++) {
+        // console.log(i13);
+        a13[i13] = [];
+        a13[i13].length = 8;
+        // console.log(a13);
+        for (let j13 = 0; j13 < 8; j13++) {
+            // a13[i13] = a13[i13][j13];
+            if ((i13 + j13) % 2 == 0) {
+                a13[i13][j13] = 0;
+            }
+            else {
+                a13[i13][j13] = 1;
+            }
+        }
+    }
+
+    console.log(a13);
+
 }
 
 document.querySelector('.b-13').onclick = f13;
+
+
 
 // Task 14
 // При нажатии b-14 выполняете функцию f14. Функция должна вывести в out-14 длины вложенных в a14 массивов. Через пробел.
@@ -210,10 +309,17 @@ let a14 = [
 ];
 
 function f14() {
+    let out14 = '';
+    for (i14 = 0; i14 < a14.length; i14++) {
+        out14 += `${a14[i14].length} `;
+    }
+    document.querySelector('.out-14').innerHTML = out14;
 
 }
 
 document.querySelector('.b-14').onclick = f14;
+
+
 
 // Task 15
 // При нажатии b-15 выполняете функцию f15. Функция должна вывести в out-15 длину самого большого вложенного массива в a15.
@@ -229,9 +335,20 @@ let a15 = [
 
 function f15() {
 
+    let a15LengthMax = a15[0].length;
+    for (i15 = 1; i15 < a15.length; i15++) {
+        if (a15LengthMax < a15[i15].length) {
+            a15LengthMax = a15[i15].length;
+        }
+    }
+
+    document.querySelector('.out-15').innerHTML = a15LengthMax;
+
 }
 
 document.querySelector('.b-15').onclick = f15;
+
+
 
 // Task 16
 // Впишите в переменную a16 массив, который соответствует всем условиям приведенным ниже ( все console.log должны дать true;
@@ -252,18 +369,22 @@ console.log(a16[0][3] == 6);
 console.groupEnd();
 
 
+
 // Task 17
 // Впишите в переменную a17 массив, который соответствует всем условиям приведенным ниже ( все console.log должны дать true;
 //  Т.е вы руками просто пишите массив такой, чтобы условия выполнялись.
 
 let a17 = [
-
+    [0, 0, 6],
+    [0, 7],
+    2,
+    [0, 0, 8]
 ];
 
 console.group('Task 17 ================');
-// console.log(a17[3][2] == 8);
-// console.log(a17[1][1] == 7);
-// console.log(a17[0][2] == 6);
+console.log(a17[3][2] == 8);
+console.log(a17[1][1] == 7);
+console.log(a17[0][2] == 6);
 
 console.groupEnd();
 
@@ -272,13 +393,17 @@ console.groupEnd();
 //  Т.е вы руками просто пишите массив такой, чтобы условия выполнялись.
 
 let a18 = [
-
+    3,
+    1,
+    [0, 12],
+    3,
+    [8],
 ];
 
 console.group('Task 18 ================');
-// console.log(a18[0] == 3);
-// console.log(a18[4][0] == 8);
-// console.log(a18[2][1] == 12);
+console.log(a18[0] == 3);
+console.log(a18[4][0] == 8);
+console.log(a18[2][1] == 12);
 
 console.groupEnd();
 
@@ -287,13 +412,21 @@ console.groupEnd();
 //  Т.е вы руками просто пишите массив такой, чтобы условия выполнялись.
 
 let a19 = [
-
+    [
+        [0, 3],
+    ],
+    [
+        [0, 0, 8]
+    ],
+    [
+        0, [12]
+    ]
 ];
 
 console.group('Task 19 ================');
-// console.log(a19[0][0][1] == 3);
-// console.log(a19[1][0][2] == 8);
-// console.log(a19[2][1][0] == 12);
+console.log(a19[0][0][1] == 3);
+console.log(a19[1][0][2] == 8);
+console.log(a19[2][1][0] == 12);
 
 console.groupEnd();
 
@@ -302,12 +435,16 @@ console.groupEnd();
 //  Т.е вы руками просто пишите массив такой, чтобы условия выполнялись.
 
 let a20 = [
+    0,
+    [0, [0, 9]],
+    [0, 1, 18],
+    12
 
 ];
 
 console.group('Task 20 ================');
-// console.log(a20[1][1][1] == 9);
-// console.log(a20[2][2] == 18);
-// console.log(a20[3]== 12);
+console.log(a20[1][1][1] == 9);
+console.log(a20[2][2] == 18);
+console.log(a20[3] == 12);
 
 console.groupEnd();
