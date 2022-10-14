@@ -9,10 +9,11 @@ function f1() {
         "five": 20
     };
     document.querySelector('.out-1').innerHTML = a1.two;
-    //return ...
+    return a1.two;
 }
 
 document.querySelector('.b-1').onclick = f1;
+
 
 
 // Task 2
@@ -27,7 +28,7 @@ function f2() {
         "five": "hi"
     };
 
-    // return
+    return a2.five;
 }
 
 document.querySelector('.b-2').onclick = () => {
@@ -49,7 +50,8 @@ function f3() {
         "odd": "hi",
         "mix": "mix"
     };
-    // return
+    // return a3.odd + ' ' + a3.five;
+    return `${a3.odd} ${a3.five}`;
 }
 
 document.querySelector('.b-3').onclick = () => {
@@ -72,12 +74,20 @@ let a4 = {
 };
 function f4() {
 
-    // return out;
+    let out = '';
+
+    for (key in a4) {
+        out += `${key} ${a4[key]} <br>`;
+    }
+
+    return out;
 }
 
 document.querySelector('.b-4').onclick = () => {
     document.querySelector('.out-4').innerHTML = f4();
 }
+
+
 
 // Task 5
 // Функция f4 жестко привязана к массиву a4. Это не удобно. Давайте напишем функцию f5, которая принимает массив как параметр и выводит его в формате указанном в функции в указанный блок (как второй параметр).
@@ -85,6 +95,12 @@ document.querySelector('.b-4').onclick = () => {
 
 function f5(arr, block) {
     let out = '';
+
+    for (key in arr) {
+        out += `${key} : ${arr[key]} <br>`;
+    }
+
+    document.querySelector(block).innerHTML = out;
     // цикл
     // формат вывода `${key} : ${arr[key]} <br>`;
     //
@@ -102,6 +118,7 @@ document.querySelector('.b-5').onclick = () => {
 }
 
 
+
 // Task 6
 // Добавьте input .i-61 и i-62. При нажатии b-6 выполняете функцию f6. Функция должна получать из i-61 ключ, а из i-62 значение и добавлять его в массив a6. После этого, с помощью функции f5 выводите массив a6 в out-6.
 
@@ -112,9 +129,16 @@ let a6 = {
 
 function f6() {
 
+    let i61 = document.querySelector('.i-61').value;
+    let i62 = document.querySelector('.i-62').value;
+    a6[i61] = i62;
+    f5(a6, '.out-6');
+
 }
 
 document.querySelector('.b-6').onclick = f6;
+
+
 
 // Task 7
 // Добавьте input .i-7. При нажатии b-7 выполняете функцию f7. Функция должна получать из i-7 ключ. Если такой ключ есть в a7 то выводить 1 в out-7, если нет - 0.
@@ -127,9 +151,32 @@ let a7 = {
 
 function f7() {
 
+    let i7 = document.querySelector('.i-7').value;
+    let out7 = document.querySelector('.out-7');
+
+    if (a7[i7] !== undefined) {
+        out7.innerHTML = 1;
+    }
+    else {
+        out7.innerHTML = 0;
+    }
+
+    // for (key in a7) {
+    //     // console.log(key);
+    //     if (key == i7) {
+    //         out7.innerHTML = 1;
+    //         break;
+    //     }
+    //     else {
+    //         out7.innerHTML = 0;
+    //     }
+    // }
+
 }
 
 document.querySelector('.b-7').onclick = f7;
+
+
 
 // Task 8
 // Добавьте input .i-8. При нажатии b-8 выполняете функцию f8. Функция должна выводить значение в out-8, если ключ введенный в i-8 есть в массиве, если нет - 0.
@@ -141,9 +188,33 @@ let a8 = {
 
 function f8() {
 
+    let out8 = document.querySelector('.out-8');
+    let i8 = document.querySelector('.i-8').value;
+
+    if (a8[i8] !== undefined) {
+        out8.innerHTML = a8[i8];
+    }
+    else {
+        out8.innerHTML = 0;
+    }
+
+
+    // for (key in a8) {
+    //     if (key == i8) {
+    //         out8.innerHTML = a8[key];
+    //         break;
+    //     }
+    //     else {
+    //         out8.innerHTML = 0;
+    //     }
+    // }
+
+
 }
 
 document.querySelector('.b-8').onclick = f8;
+
+
 
 // Task 9
 // Добавьте input .i-9. При нажатии b-9 выполняете функцию f9. Функция должна вывести в out-9 все ключи массива a9, которые содержат значение, равное значению в input.i-9. Вывод через пробел. Если значений - нет - то выводить пустую строку.
@@ -158,17 +229,47 @@ let a9 = {
 
 function f9() {
 
+    let out9 = '';
+    for (key in a9) {
+        if (a9[key] == document.querySelector('.i-9').value) {
+            out9 += `${key} `;
+
+        }
+        // else {
+        //     out9 += '';
+        // }
+    }
+    document.querySelector('.out-9').innerHTML = out9;
+
 }
 
 document.querySelector('.b-9').onclick = f9;
+
+
 
 // Task 10
 // Давайте напишем полезную функцию f10, которая проверяет есть ли значение в ассоциативном массиве. Фукнция должна возвращать true если есть, и false если нет. Массив и значение передавать функции в качестве параметров.
 
 function f10(arr, val) {
 
+    for (key in arr) {
+        // console.log(arr);
+        // console.log(val);
+        // console.log(key);
+
+        if (arr[key] == val) {
+            // console.log(key);
+            return true;
+            // break;
+        }
+        // else {
+        //     return false;
+
+        // }
+    }
+
     //return true;
-    //return false;
+    return false;
 }
 
 document.querySelector('.b-10').onclick = () => {
@@ -179,6 +280,7 @@ document.querySelector('.b-10').onclick = () => {
     }
     document.querySelector('.out-10').innerHTML = f10(a10, 22);
 };
+
 
 
 // Task 11
@@ -193,9 +295,30 @@ let a11 = {
 };
 
 function f11() {
+
+    let i11 = document.querySelector('.i-11').value;
+    // console.log(i11);
+
+    // for (key in a11) {
+    //     // console.log(key);
+    //     if (key == i11) {
+    //         delete a11[key];
+    //     }
+    // }
+
+    // if (a11[i11] !== undefined) {
+    //     delete a11[i11];
+    // }
+
+    delete a11[i11];
+
+    f5(a11, '.out-11');
+
 }
 
 document.querySelector('.b-11').onclick = f11;
+
+
 
 // Task 12
 //  При нажатии b-12 выполняете функцию f12. Функция должна получить значение из i-12 и удалить запись из массива a12 с таким значением. После этого вывести массив в out-12. Для вывода используйте функцию f5.
@@ -210,9 +333,22 @@ let a12 = {
 
 function f12() {
 
+    let i12 = document.querySelector('.i-12').value;
+
+    for (key in a12) {
+        if (i12 == a12[key]) {
+            delete a12[key];
+            // break;  // якщо за раз тельки один елемент
+        }
+    }
+
+    f5(a12, '.out-12');
+
 }
 
 document.querySelector('.b-12').onclick = f12;
+
+
 
 // Task 13
 // При нажатии b-13 выполняете функцию f13. Функция должна в out-13 выводить сумму значений массива a13 (только числа).
@@ -226,9 +362,21 @@ let a13 = {
 
 function f13() {
 
+    let out13 = 0;
+
+    for (key in a13) {
+        // console.log(typeof a13[key]);
+        if (typeof a13[key] == 'number') {
+            out13 += a13[key];
+        }
+    }
+    document.querySelector('.out-13').innerHTML = out13;
+
 }
 
 document.querySelector('.b-13').onclick = f13;
+
+
 
 // Task 14
 // При нажатии b-14 выполняете функцию f14. Функция должна в out-14 выводить нулевые (по индексу)  элементы вложенных массивов в a14. Вывод через пробел.
@@ -243,9 +391,20 @@ let a14 = {
 
 function f14() {
 
+    let out14 = '';
+
+    for (key in a14) {
+        out14 += `${a14[key][0]} `;
+
+    }
+
+    document.querySelector('.out-14').innerHTML = out14;
+
 }
 
 document.querySelector('.b-14').onclick = f14;
+
+
 
 // Task 15
 // При нажатии b-15 выполняете функцию f15. Функция должна в out-15 выводить элементы вложенных массивов в a15. Вывод через пробел.
@@ -261,9 +420,22 @@ let a15 = {
 
 function f15() {
 
+    let out15 = '';
+
+    for (key in a15) {
+        for (let i15 = 0; i15 < a15[key].length; i15++) {
+            out15 += `${a15[key][i15]} `;
+            // console.log(out15);
+        }
+    }
+
+    document.querySelector('.out-15').innerHTML = out15;
+
 }
 
 document.querySelector('.b-15').onclick = f15;
+
+
 
 // Task 16
 // При нажатии b-16 выполняете функцию f16. Функция должна в out-16 выводить элементы name вложенных массивов в a16. Вывод через пробел.
@@ -285,9 +457,26 @@ let a16 = {
 
 function f16() {
 
+    let out16 = '';
+
+    // for (key1 in a16) {
+    //     for (key2 in a16[key1])
+    //         if (key2 == 'name') {
+    //             out16 += `${a16[key1][key2]} `;
+
+    //         }
+    // }
+
+    for (key in a16) {
+        out16 += `${a16[key].name} `;
+    }
+
+    document.querySelector('.out-16').innerHTML = out16;
+
 }
 
 document.querySelector('.b-16').onclick = f16;
+
 
 
 // Task 17
@@ -310,9 +499,21 @@ let a17 = {
 
 function f17() {
 
+    let out17 = '';
+
+    for (key in a17) {
+        if (a17[key].age > 30) {
+            out17 += `${a17[key].name} `;
+        }
+    }
+
+    document.querySelector('.out-17').innerHTML = out17;
+
 }
 
 document.querySelector('.b-17').onclick = f17;
+
+
 
 // Task 18
 // При нажатии b-18 выполняете функцию f18. Функция должна в out-18 вывести станции метро из массива a18 той ветки, которую пользователь ввел в i-18. Вывод станций - через пробел. Если ветка не найдена выводите пустую строку.
@@ -325,7 +526,33 @@ let a18 = {
 
 function f18() {
 
+    let out18 = '';
+    let i18 = document.querySelector('.i-18').value;
+    // console.log(i18);
+
+    // for (key in a18) {
+    //     // console.log(key);
+    //     if (i18 == key) {
+    //         for (let j18 = 0; j18 < a18[key].length; j18++) {
+    //             out18 += `${a18[key][j18]} `;
+    //             // console.log(out18);
+    //         }
+    //     }
+    // }
+
+    if (a18[i18] !== undefined) {
+        for (let j18 = 0; j18 < a18[i18].length; j18++) {
+            out18 += `${a18[i18][j18]} `;
+        }
+    }
+
+    document.querySelector('.out-18').innerHTML = out18;
+
 }
+
+document.querySelector('.b-18').onclick = f18;
+
+
 
 // Task 19
 // При нажатии b-19 выполняете функцию f19. Функция должна в out-19 вывести цвет ветки станции которую пользователь ввел в i-19. Пользователь может вводить текст как с большой, так и с маленькой буквы. Если ветка не найдена - выводите пустую строку.
@@ -337,11 +564,52 @@ let a19 = {
     "green": ['Syrets', 'Zoloti Vorota', 'Klovska', 'Vidubichi']
 }
 
+
 function f19() {
+
+    let in19 = document.querySelector('.i-19').value;
+    let out19 = document.querySelector('.out-19');
+
+
+    // let n = 0;
+
+    // for (key in a19) {
+    //     // console.log(key);
+    //     if (n == 0) {
+    //         for (let j19 = 0; j19 < a19[key].length; j19++) {
+    //             // console.log(j19);
+    //             if (in19.toLowerCase() === a19[key][j19].toLowerCase()) {
+    //                 out19.innerHTML = key;
+    //                 n = 1;
+    //                 break;
+    //             }
+    //             else {
+    //                 out19.innerHTML = '';
+    //             }
+
+    //         }
+    //     }
+
+    // }
+
+    out19.innerHTML = '';
+
+    for (key in a19) {
+        for (let j19 = 0; j19 < a19[key].length; j19++) {
+            if (in19.toLowerCase() === a19[key][j19].toLowerCase()) {
+                out19.innerHTML = key;
+                break;
+            }
+
+        }
+
+    }
 
 }
 
 document.querySelector('.b-19').onclick = f19;
+
+
 
 // Task 20
 // При нажатии b-20 выполняете функцию f20. Функция должна в out-20 вывести название станции которые содержат переход на другую ветку. Такие станции маркируются 2. Вывод через пробел
@@ -354,6 +622,20 @@ let a20 = {
 
 function f20() {
 
+    let out20 = '';
+    // console.log(a20);
+    for (key in a20) {
+        // console.log(a20[key]);
+        for (let i20 = 0; i20 < a20[key].length; i20++) {
+            // console.log(a20[key][i20][1]);
+            if (a20[key][i20][1] == 2) {
+                out20 += `${a20[key][i20][0]} `;
+            }
+        }
+    }
+
+    document.querySelector('.out-20').innerHTML = out20;
+
 }
 
-document.querySelector('.b-20').onclick = f20
+document.querySelector('.b-20').onclick = f20;
